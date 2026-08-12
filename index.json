@@ -3,6 +3,7 @@
   "homepage": "https://github.com/coj211/manga-sources",
   "sources": [
     {"key": "zaimanhua", "name": "再漫画", "desc": "再漫画官方API（纯JSON，稳定）"},
-    {"key": "baozi", "name": "包子漫画", "desc": "HTML+API，多镜像域名容错"}
+    {"key": "baozi", "name": "包子漫画", "desc": "HTML+API，多镜像域名容错"},
+    {"key": "manga_dex", "name": "MangaDex", "desc": "MangaDex官方API（海外，中文/英文，图片可缩放）"}
   ]
 }

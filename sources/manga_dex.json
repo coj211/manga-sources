@@ -1,0 +1,48 @@
+{
+  "name": "MangaDex",
+  "key": "manga_dex",
+  "baseUrl": "https://api.mangadex.org",
+  "ua": "Mozilla/5.0 (Linux; Android 6.0) Mobile",
+  "referer": "",
+  "search": {
+    "url": "https://api.mangadex.org/manga?title={kw}&includes[]=cover_art&limit=20&offset={offset}&contentRating[]=safe&contentRating[]=suggestive&order[relevance]=desc",
+    "type": "json",
+    "list": "data",
+    "id": "id",
+    "title": "attributes.title[first]",
+    "cover": {"path": "relationships[type=cover_art].attributes.fileName", "prefix": "https://uploads.mangadex.org/covers/{id}/", "suffix": ".256.jpg"},
+    "author": "relationships[type=artist].attributes.name|relationships[type=author].attributes.name",
+    "desc": "attributes.description.en"
+  },
+  "latest": {
+    "url": "https://api.mangadex.org/manga?includes[]=cover_art&limit=20&offset={offset}&order[latestUploadedChapter]=desc&hasAvailableChapters=true&contentRating[]=safe&contentRating[]=suggestive",
+    "type": "json",
+    "list": "data",
+    "id": "id",
+    "title": "attributes.title[first]",
+    "cover": {"path": "relationships[type=cover_art].attributes.fileName", "prefix": "https://uploads.mangadex.org/covers/{id}/", "suffix": ".256.jpg"},
+    "author": "relationships[type=artist].attributes.name|relationships[type=author].attributes.name",
+    "desc": "attributes.description.en"
+  },
+  "detail": {
+    "url": "https://api.mangadex.org/manga/{id}?includes[]=cover_art&includes[]=author&includes[]=artist",
+    "type": "json",
+    "title": "data.attributes.title[first]",
+    "cover": {"path": "data.relationships[type=cover_art].attributes.fileName", "prefix": "https://uploads.mangadex.org/covers/{id}/", "suffix": ".256.jpg"},
+    "chapters": {
+      "type": "json",
+      "groups": "data",
+      "items": "@",
+      "ep": "id",
+      "name": {"path": "attributes.chapter", "prefix": "第", "suffix": " 话"},
+      "feed": "https://api.mangadex.org/manga/{id}/feed?limit=500&translatedLanguage[]=zh&translatedLanguage[]=zh-hk&translatedLanguage[]=en&order[chapter]=asc&contentRating[]=safe&contentRating[]=suggestive&includeExternalUrl=0"
+    }
+  },
+  "ep": {
+    "url": "https://api.mangadex.org/at-home/server/{ep}",
+    "type": "json",
+    "list": "chapter.data",
+    "template": "{base}/data/{hash}/{item}?width=800",
+    "vars": {"base": "baseUrl", "hash": "chapter.hash"}
+  }
+}
