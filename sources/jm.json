@@ -1,0 +1,53 @@
+{
+  "name": "禁漫天堂",
+  "key": "jm",
+  "baseUrl": "https://18comic.vip",
+  "ua": "Mozilla/5.0 (Linux; Android 6.0) Mobile",
+  "referer": "https://18comic.vip/",
+  "search": {
+    "url": "{base}/search?search_query={kw}&o=0",
+    "type": "json",
+    "list": "data.content",
+    "id": "id",
+    "title": "name",
+    "author": "author",
+    "desc": "description",
+    "cover": {
+      "path": "id",
+      "prefix": "https://cdn-msp.jmapinodeudzn.net/media/albums/",
+      "suffix": "_3x4.jpg"
+    }
+  },
+  "detail": {
+    "url": "{base}/album?id={id}",
+    "type": "json",
+    "title": "name",
+    "cover": {
+      "path": "id",
+      "prefix": "https://cdn-msp.jmapinodeudzn.net/media/albums/",
+      "suffix": "_3x4.jpg"
+    },
+    "chapters": {
+      "type": "json",
+      "groups": "data.series",
+      "items": "@",
+      "ep": "id",
+      "name": {
+        "path": "name",
+        "prefix": "",
+        "suffix": ""
+      }
+    }
+  },
+  "ep": {
+    "url": "{base}/chapter?id={ep}",
+    "type": "json",
+    "list": "data.images",
+    "template": "https://cdn-msp.jmapinodeudzn.net/media/photos/{ep}/{item}"
+  },
+  "reqHeaders": {
+    "Authorization": "Bearer",
+    "token": "md5({time}18comicAPPContent)",
+    "tokenparam": "{time},1.2.0"
+  }
+}
