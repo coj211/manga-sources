@@ -14,3 +14,5 @@ J2ME 漫画阅读器（MangaReader）的源仓库。
 ## 分发
 
 jsdelivr CDN：`https://cdn.jsdelivr.net/gh/coj211/manga-sources@main/index.json`
+
+当前源：再漫画、包子漫画、MangaDex（2026-08）
