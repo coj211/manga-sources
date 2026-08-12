@@ -42,7 +42,7 @@
     "url": "https://api.mangadex.org/at-home/server/{ep}",
     "type": "json",
     "list": "chapter.data",
-    "template": "{base}/data/{hash}/{item}?width=800",
+    "template": "{base}/data/{hash}/{item}?width=500",
     "vars": {"base": "baseUrl", "hash": "chapter.hash"}
   }
 }
