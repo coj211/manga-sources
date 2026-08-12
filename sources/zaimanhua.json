@@ -1,0 +1,48 @@
+{
+  "name": "再漫画",
+  "key": "zaimanhua",
+  "baseUrl": "https://v4api.zaimanhua.com/app/v1",
+  "ua": "Mozilla/5.0 (Linux; Android) Mobile",
+  "referer": "",
+  "search": {
+    "url": "{base}/search/index?keyword={kw}&page={page}&sort=0&size=20",
+    "type": "json",
+    "list": "data.list",
+    "id": "comic_id|id",
+    "title": "title",
+    "cover": "cover",
+    "author": "authors",
+    "desc": "description"
+  },
+  "latest": {
+    "url": "{base}/comic/update/list/0/{page}",
+    "type": "json",
+    "list": "data",
+    "id": "comic_id|id",
+    "title": "title",
+    "cover": "cover",
+    "author": "authors",
+    "desc": "last_update_chapter_name"
+  },
+  "detail": {
+    "url": "{base}/comic/detail/{id}?channel=android",
+    "type": "json",
+    "title": "data.data.title",
+    "cover": "data.data.cover",
+    "desc": "data.data.description",
+    "chapters": {
+      "type": "json",
+      "groups": "data.data.chapters",
+      "groupTitle": "title",
+      "items": "data",
+      "ep": "chapter_id",
+      "name": "chapter_title",
+      "reverse": true
+    }
+  },
+  "ep": {
+    "url": "{base}/comic/chapter/{cid}/{ep}",
+    "type": "json",
+    "list": "data.data.page_url_hd|data.data.page_url"
+  }
+}

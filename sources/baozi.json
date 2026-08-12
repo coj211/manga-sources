@@ -1,0 +1,66 @@
+{
+  "name": "包子漫画",
+  "key": "baozi",
+  "baseUrl": "https://cn.bzmgcn.com",
+  "textMax": 300000,
+  "altBaseUrls": [
+    "https://cn.webmota.com",
+    "https://cn.kukuc.co",
+    "https://cn.twmanga.com",
+    "https://cn.dinnerku.com",
+    "https://cn.baozimhcn.com"
+  ],
+  "ua": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36",
+  "referer": "https://cn.bzmgcn.com/",
+  "search": {
+    "url": "{base}/search?q={kw}",
+    "type": "html",
+    "items": {"start": "<div class=\"comics-card"},
+    "id": [["between", "href=\"/comic/", "\""]],
+    "title": [["between", "<h3 class=\"text-truncate\">", "</h3>"], ["trim"]],
+    "cover": [["between", "<amp-img", ">"], ["between", "src=\"", "\""]],
+    "author": [["between", "<small class=\"tags text-truncate\">", "</small>"], ["strip"], ["trim"]],
+    "desc": []
+  },
+  "latest": {
+    "url": "{base}/api/bzmhq/amp_comic_list?type=all&region=all&state=all&filter=%2a&page={page}&limit=36&language=cn",
+    "type": "json",
+    "list": "items",
+    "id": "comic_id",
+    "title": "name",
+    "cover": {"path": "topic_img", "prefix": "https://static-tw.baozimh.com/cover/", "suffix": "?w=285&h=375&q=100"},
+    "author": "author",
+    "desc": ""
+  },
+  "detail": {
+    "url": "{base}/comic/{id}",
+    "type": "html",
+    "title": [["between", "<h1 class=\"comics-detail__title\"", "</h1>"], ["after", ">"], ["trim"]],
+    "cover": [["between", "<amp-img", ">"], ["between", "src=\"", "\""]],
+    "chapters": {
+      "type": "html",
+      "splits": [
+        {"start": "<div data-index=\"", "from": "id=\"chapter-items\""},
+        {"start": "<div class=\"pure-u-1-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-1-4 comics-chapters\"", "from": "id=\"chapters_other_list\""}
+      ],
+      "name": [["between", "<span", "</span>"], ["after", ">"], ["trim"]],
+      "link": [["between", "href=\"", "\""], ["abs"]]
+    }
+  },
+  "ep": {
+    "url": "{link}",
+    "type": "html",
+    "images": [
+      ["all", "data-src=\"", "\""],
+      ["keep", "comic"],
+      ["imgcdn", "as.baozimh.com", ""]
+    ]
+  },
+  "altImgCdn": [
+    "as-rsa1-usla.baozicdn.com",
+    "ascn-a3.bzcdn.net",
+    "asgb-a3.bzcdn.net",
+    "s1.baozicdn.com",
+    "as.baozimh.com"
+  ]
+}
