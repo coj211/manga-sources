@@ -4,6 +4,7 @@
   "baseUrl": "https://api.mangadex.org",
   "ua": "Mozilla/5.0 (Linux; Android 6.0) Mobile",
   "referer": "",
+  "altImgCdn": ["https://uploads.mangadex.org"],
   "search": {
     "url": "https://api.mangadex.org/manga?title={kw}&includes[]=cover_art&limit=20&offset={offset}&contentRating[]=safe&contentRating[]=suggestive&order[relevance]=desc",
     "type": "json",
@@ -42,7 +43,7 @@
     "url": "https://api.mangadex.org/at-home/server/{ep}",
     "type": "json",
     "list": "chapter.data",
-    "template": "{base}/data/{hash}/{item}?width=500",
-    "vars": {"base": "baseUrl", "hash": "chapter.hash"}
+    "template": "https://mangadex.org/data/{hash}/{item}?width=500",
+    "vars": {"hash": "chapter.hash"}
   }
 }
