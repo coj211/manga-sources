@@ -43,7 +43,7 @@
     "url": "https://api.mangadex.org/at-home/server/{ep}",
     "type": "json",
     "list": "chapter.data",
-    "template": "https://mangadex.org/data/{hash}/{item}?width=500",
+    "template": "https://uploads.mangadex.org/data/{hash}/{item}",
     "vars": {"hash": "chapter.hash"}
   }
 }
